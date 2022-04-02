@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="408.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.pages.authentication.login.LoginController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="33.0" text="Login to J.A.B.B" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font></Label>
+        <TextField id="usernameField" layoutX="154.0" layoutY="114.0" prefHeight="30.0" prefWidth="396.0" />
+        <PasswordField id="passwordField" layoutX="153.0" layoutY="194.0" prefHeight="30.0" prefWidth="396.0" />
+        <Label layoutX="25.0" layoutY="117.0" text="Username :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="28.0" layoutY="198.0" text="Password :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button layoutX="253.0" layoutY="278.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="97.0" text="Let's gooo" />
+        <Hyperlink layoutX="210.0" layoutY="365.0" onAction="#navigateToRegister" text="Can i have an account please ?" />
+    </children>
+</AnchorPane>
