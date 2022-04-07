@@ -1,20 +1,23 @@
 package com.bloggy.bloggy.pages.authentication.registration;
 
-import com.bloggy.bloggy.helpers.Alerter;
+import com.bloggy.bloggy.utils.Alerter;
+import com.bloggy.bloggy.utils.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.UUID;
 
 public class RegistrationController {
 
@@ -36,9 +39,36 @@ public class RegistrationController {
 
     public void handleRegister(ActionEvent actionEvent) {
 
-        if(fullNameField.getText().isEmpty() || usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
-            Alerter.showMessage("Invalid form","Fill all the fields man !", "how do you expect us to create your account ?...");
+        if (fullNameField.getText().isEmpty() || usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
+            Alerter.showMessage("Invalid form", "Fill all the fields man !", "how do you expect us to create your account ?...");
         } else {
+
+            Connection connection = null;
+            PreparedStatement statement = null;
+
+            String query = "INSERT into users values(?, ?, ?, ?)";
+
+            try {
+                connection = Database.getConnection();
+                statement = connection.prepareStatement(query);
+
+                statement.setString(1, UUID.randomUUID().toString());
+                statement.setString(2, fullNameField.getText());
+                statement.setString(3, usernameField.getText());
+                statement.setString(4, passwordField.getText());
+
+                int result = statement.executeUpdate();
+
+                if (result == 0) {
+                    Alerter.showMessage("Oops...", "Error creating your account", "My bad, please try again !");
+                } else {
+                    Alerter.showMessage("Registration successful", "Welcome to J.A.B.B, " + fullNameField.getText() + " !. Click on 'I have an account bro' to sign in.", " Your account have been successfully created");
+                }
+
+            } catch (SQLException exception) {
+                Alerter.showMessage("Aw...", "An unexpected error occurred, more details below", exception.getMessage());
+            }
+
         }
 
     }
@@ -46,7 +76,7 @@ public class RegistrationController {
     public void navigateToLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/auth/login-view.fxml"));
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
         stage.setScene(scene);

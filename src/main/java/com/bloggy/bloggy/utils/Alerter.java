@@ -1,4 +1,4 @@
-package com.bloggy.bloggy.helpers;
+package com.bloggy.bloggy.utils;
 
 import javafx.scene.control.Alert;
 

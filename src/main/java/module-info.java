@@ -9,6 +9,7 @@ module com.bloggy.bloggy {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens com.bloggy.bloggy to javafx.fxml;
     opens com.bloggy.bloggy.pages.authentication.registration to javafx.fxml;
