@@ -5,18 +5,12 @@ import com.bloggy.bloggy.utils.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.UUID;
 
 public class RegistrationController {
@@ -62,11 +56,14 @@ public class RegistrationController {
                 if (result == 0) {
                     Alerter.showMessage("Oops...", "Error creating your account", "My bad, please try again !");
                 } else {
-                    Alerter.showMessage("Registration successful", "Welcome to J.A.B.B, " + fullNameField.getText() + " !. Click on 'I have an account bro' to sign in.", " Your account have been successfully created");
+                    Alerter.showMessage("Registration successful", "Welcome to J.A.B.B, " + fullNameField.getText() + " !", " Your account have been successfully created");
+                    navigateToLogin(actionEvent);
                 }
 
             } catch (SQLException exception) {
                 Alerter.showMessage("Aw...", "An unexpected error occurred, more details below", exception.getMessage());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
         }
