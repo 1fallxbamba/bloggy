@@ -63,7 +63,7 @@ public class RegistrationController {
             } catch (SQLException exception) {
                 Alerter.showMessage("Aw...", "An unexpected error occurred, more details below", exception.getMessage());
             } catch (IOException e) {
-                e.printStackTrace();
+                Alerter.showMessage("Aw...", "An unexpected error occurred, more details below", e.getMessage());
             }
 
         }
