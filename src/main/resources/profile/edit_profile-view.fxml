@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.profile.ProfileController">
+   <children>
+      <Label layoutX="191.0" layoutY="14.0" text="Your J.A.B.B Profile">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="fullNameLabel" layoutX="26.0" layoutY="132.0" text="Full Name :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fullNameField" layoutX="150.0" layoutY="132.0" prefWidth="205.0" />
+      <Label fx:id="usernameLabel" layoutX="26.0" layoutY="197.0" text="Username :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameField" layoutX="150.0" layoutY="196.0" prefWidth="205.0" />
+      <Label fx:id="passwordLabel" layoutX="27.0" layoutY="263.0" text="Password :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="updateButton" layoutX="193.0" layoutY="362.0" mnemonicParsing="false" onAction="#editProfile" text="Update" />
+      <Button layoutX="344.0" layoutY="362.0" mnemonicParsing="false" text="Go back" />
+      <PasswordField fx:id="passwordField" layoutX="151.0" layoutY="262.0" prefWidth="205.0" />
+   </children>
+</AnchorPane>

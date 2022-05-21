@@ -14,6 +14,8 @@ module com.bloggy.bloggy {
     opens com.bloggy.bloggy to javafx.fxml;
     opens com.bloggy.bloggy.controllers.authentication.registration to javafx.fxml;
     opens com.bloggy.bloggy.controllers.authentication.login to javafx.fxml;
+    opens com.bloggy.bloggy.controllers.profile to javafx.fxml;
     opens com.bloggy.bloggy.controllers.main to javafx.fxml;
     exports com.bloggy.bloggy;
+    opens com.bloggy.bloggy.controllers.article to javafx.fxml;
 }

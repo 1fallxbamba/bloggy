@@ -5,11 +5,13 @@ public class BloggyUser {
     private String id;
     private String fullName;
     private String username;
+    private String password;
 
-    public BloggyUser(String id, String fullName, String username) {
+    public BloggyUser(String id, String fullName, String username, String password) {
         this.id = id;
         this.fullName = fullName;
         this.username = username;
+        this.password = password;
     }
 
     public BloggyUser(BloggyUser twin) {
@@ -43,4 +45,8 @@ public class BloggyUser {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getPassword() {return this.password;}
+
+    public void setPassword(String password) {this.password = password;}
 }

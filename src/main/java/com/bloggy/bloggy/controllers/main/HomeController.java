@@ -1,24 +1,20 @@
 package com.bloggy.bloggy.controllers.main;
 
+import com.bloggy.bloggy.controllers.article.ArticleController;
+import com.bloggy.bloggy.controllers.profile.ProfileController;
 import com.bloggy.bloggy.models.user.BloggyUser;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class HomeController {
 
     private Stage stage;
     private Scene scene;
@@ -27,18 +23,6 @@ public class HomeController implements Initializable {
 
     @FXML
     private Label welcomeLabel;
-
-    @FXML
-    private TableView<String> articlesTable;
-
-    @FXML
-    private TableColumn<String, String> articleTitleColumn;
-
-    @FXML
-    private TableColumn<String, String> articleContentColumn;
-
-    @FXML
-    private TableColumn<String, String> publicationDateColumn;
 
 
     public void setConnectedUser(BloggyUser connected) {
@@ -49,7 +33,7 @@ public class HomeController implements Initializable {
 
     public void navigateToNewArticle(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/post_article-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/article/post_article-view.fxml"));
 
         Parent root = loader.load();
 
@@ -63,25 +47,24 @@ public class HomeController implements Initializable {
         articleController.setConnectedUser(this.connectedUser);
 
         stage.show();
-
-//        Parent root = FXMLLoader.load(getClass().getResource("/main/post_article-view.fxml"));
-//
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//
-//        stage.setScene(scene);
-//        stage.show();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        articleTitleColumn.setCellValueFactory(new PropertyValueFactory<>("Title"));
-        articleContentColumn.setCellValueFactory(new PropertyValueFactory<>("Content"));
-        publicationDateColumn.setCellValueFactory(new PropertyValueFactory<>("Publication Date"));
+    public void navigateToEditProfile(ActionEvent event) throws IOException {
 
-        articlesTable.setItems(stuff);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile/edit_profile-view.fxml"));
 
+        Parent root = loader.load();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+
+        stage.setScene(scene);
+
+        ProfileController profileController = loader.getController();
+
+        profileController.setConnectedUser(this.connectedUser);
+
+        stage.show();
     }
 
-    private ObservableList<String> stuff= FXCollections.observableArrayList("Po", "Pas", "323");
 }

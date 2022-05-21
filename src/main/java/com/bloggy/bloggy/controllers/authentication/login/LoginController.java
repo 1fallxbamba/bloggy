@@ -52,13 +52,13 @@ public class LoginController {
                 if(result.next()) {
 
                     fetchedID = result.getString("id");
-                    fetchedName = result.getString("fullName");
+                    fetchedName = result.getString("fullname");
                     fetchedUsername = result.getString("username");
                     fetchedPassword = result.getString("password");
 
                     if(fetchedPassword.equals(givenPassword)) {
 
-                        BloggyUser connectedUser = new BloggyUser(fetchedID, fetchedName, fetchedUsername);
+                        BloggyUser connectedUser = new BloggyUser(fetchedID, fetchedName, fetchedUsername, fetchedPassword);
 
                         navigateToHome(actionEvent, connectedUser);
                     } else {

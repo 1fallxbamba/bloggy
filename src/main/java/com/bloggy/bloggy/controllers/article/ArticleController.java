@@ -1,4 +1,4 @@
-package com.bloggy.bloggy.controllers.main;
+package com.bloggy.bloggy.controllers.article;
 
 import com.bloggy.bloggy.models.user.BloggyUser;
 import com.bloggy.bloggy.utils.Alerter;
@@ -20,9 +20,6 @@ public class ArticleController {
     @FXML
     private TextArea articleContentField;
 
-    @FXML
-    private Label titleLabel;
-
     private BloggyUser connectedUser;
 
     public void setConnectedUser(BloggyUser connectedUser) {
@@ -38,7 +35,7 @@ public class ArticleController {
             Connection connection = null;
             PreparedStatement statement = null;
 
-            String query = "INSERT into articles values(?, ?, ?, ?)";
+            String query = "INSERT into article values(?, ?, ?, ?)";
 
             try {
 
