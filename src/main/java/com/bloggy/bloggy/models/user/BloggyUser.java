@@ -12,6 +12,14 @@ public class BloggyUser {
         this.username = username;
     }
 
+    public BloggyUser(BloggyUser twin) {
+        this.id = twin.getId();
+        this.fullName = twin.getFullName();
+        this.username = twin.getUsername();
+    }
+
+    public BloggyUser() {}
+
     public String getId() {
         return id;
     }

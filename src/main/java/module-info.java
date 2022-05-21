@@ -12,8 +12,8 @@ module com.bloggy.bloggy {
     requires java.sql;
 
     opens com.bloggy.bloggy to javafx.fxml;
-    opens com.bloggy.bloggy.pages.authentication.registration to javafx.fxml;
-    opens com.bloggy.bloggy.pages.authentication.login to javafx.fxml;
-    opens com.bloggy.bloggy.pages.home to javafx.fxml;
+    opens com.bloggy.bloggy.controllers.authentication.registration to javafx.fxml;
+    opens com.bloggy.bloggy.controllers.authentication.login to javafx.fxml;
+    opens com.bloggy.bloggy.controllers.main to javafx.fxml;
     exports com.bloggy.bloggy;
 }

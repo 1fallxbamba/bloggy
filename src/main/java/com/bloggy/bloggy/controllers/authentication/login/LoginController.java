@@ -1,7 +1,7 @@
-package com.bloggy.bloggy.pages.authentication.login;
+package com.bloggy.bloggy.controllers.authentication.login;
 
 import com.bloggy.bloggy.models.user.BloggyUser;
-import com.bloggy.bloggy.pages.home.HomeController;
+import com.bloggy.bloggy.controllers.main.HomeController;
 import com.bloggy.bloggy.utils.Alerter;
 import com.bloggy.bloggy.utils.Database;
 import javafx.event.ActionEvent;
@@ -92,7 +92,7 @@ public class LoginController {
 
     public void navigateToHome(ActionEvent event, BloggyUser connectedUser) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/home/home-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/home-view.fxml"));
 
         Parent root = loader.load();
 

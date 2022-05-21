@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="451.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.pages.authentication.registration.RegistrationController">
+<AnchorPane prefHeight="451.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.authentication.registration.RegistrationController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="45.0" text="Register to J.A.B.B" textAlignment="CENTER">
          <font>

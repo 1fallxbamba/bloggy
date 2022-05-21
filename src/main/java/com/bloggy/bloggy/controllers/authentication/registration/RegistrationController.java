@@ -1,4 +1,4 @@
-package com.bloggy.bloggy.pages.authentication.registration;
+package com.bloggy.bloggy.controllers.authentication.registration;
 
 import com.bloggy.bloggy.utils.Alerter;
 import com.bloggy.bloggy.utils.Database;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.main.ArticleController">
+   <children>
+      <Label fx:id="titleLabel" layoutX="196.0" layoutY="14.0" text="New boring article">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="122.0" text="Title :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="184.0" text="Content :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="articleTitleField" layoutX="111.0" layoutY="121.0" />
+      <TextArea fx:id="articleContentField" layoutX="111.0" layoutY="176.0" prefHeight="200.0" prefWidth="413.0" />
+      <Button fx:id="saveArticleButton" layoutX="264.0" layoutY="400.0" mnemonicParsing="false" onAction="#saveArticle" text="POST IT" />
+   </children>
+</AnchorPane>
