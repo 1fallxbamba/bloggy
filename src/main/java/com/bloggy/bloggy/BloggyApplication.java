@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -15,6 +16,8 @@ public class BloggyApplication extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/auth/registration-view.fxml"));
 
         stage.setTitle("Bloggy : J.A.B.B");
+
+        stage.initStyle(StageStyle.UNDECORATED);
 
         stage.setScene(new Scene(root, 800, 500));
 
