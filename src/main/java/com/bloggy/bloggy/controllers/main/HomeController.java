@@ -27,7 +27,7 @@ public class HomeController {
 
     public void setConnectedUser(BloggyUser connected) {
         this.connectedUser = connected;
-        welcomeLabel.setText("Welcome " + this.connectedUser.getUsername() );
+        welcomeLabel.setText("Welcome " + this.connectedUser.getFullName());
     }
 
 
@@ -37,7 +37,25 @@ public class HomeController {
 
         Parent root = loader.load();
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+
+        stage.setScene(scene);
+
+        ArticleController articleController = loader.getController();
+
+        articleController.setConnectedUser(this.connectedUser);
+
+        stage.show();
+    }
+
+    public void navigateToAllArticles(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/article/all_articles-view.fxml"));
+
+        Parent root = loader.load();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
         stage.setScene(scene);
@@ -55,7 +73,7 @@ public class HomeController {
 
         Parent root = loader.load();
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
         stage.setScene(scene);

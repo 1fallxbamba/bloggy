@@ -1,7 +1,7 @@
 package com.bloggy.bloggy.controllers.authentication.registration;
 
+import com.bloggy.bloggy.models.user.BloggyUser;
 import com.bloggy.bloggy.utils.Alerter;
-import com.bloggy.bloggy.utils.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
 import java.util.UUID;
 
 public class RegistrationController {
@@ -31,39 +30,21 @@ public class RegistrationController {
     private Button registerButton;
 
 
-    public void handleRegister(ActionEvent actionEvent) {
+    public void handleRegister(ActionEvent actionEvent) throws IOException {
 
         if (fullNameField.getText().isEmpty() || usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
             Alerter.showMessage("Invalid form", "Fill all the fields man !", "how do you expect us to create your account ?...");
         } else {
 
-            Connection connection = null;
-            PreparedStatement statement = null;
+            BloggyUser newUser = new BloggyUser(
+                    UUID.randomUUID().toString(),
+                    fullNameField.getText(),
+                    usernameField.getText(),
+                    passwordField.getText()
+            );
 
-            String query = "INSERT into users values(?, ?, ?, ?)";
-
-            try {
-                connection = Database.getConnection();
-                statement = connection.prepareStatement(query);
-
-                statement.setString(1, UUID.randomUUID().toString());
-                statement.setString(2, fullNameField.getText());
-                statement.setString(3, usernameField.getText());
-                statement.setString(4, passwordField.getText());
-
-                int result = statement.executeUpdate();
-
-                if (result == 0) {
-                    Alerter.showMessage("Oops...", "Error creating your account", "My bad, please try again !");
-                } else {
-                    Alerter.showMessage("Registration successful", "Welcome to J.A.B.B, " + fullNameField.getText() + " !", " Your account have been successfully created");
-                    navigateToLogin(actionEvent);
-                }
-
-            } catch (SQLException exception) {
-                Alerter.showMessage("Aw...", "An unexpected error occurred, more details below", exception.getMessage());
-            } catch (IOException e) {
-                Alerter.showMessage("Aw...", "An unexpected error occurred, more details below", e.getMessage());
+            if (BloggyUser.createNew(newUser) != 0) {
+                navigateToLogin(actionEvent);
             }
 
         }
