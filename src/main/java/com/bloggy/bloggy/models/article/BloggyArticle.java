@@ -1,16 +1,9 @@
 package com.bloggy.bloggy.models.article;
 
-import com.bloggy.bloggy.models.user.BloggyUser;
 import com.bloggy.bloggy.utils.Alerter;
 import com.bloggy.bloggy.utils.Database;
 
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,29 +106,47 @@ public class BloggyArticle {
     public static List<BloggyArticle> fetchAll() {
 
         Statement statement = null;
+        PreparedStatement preparedStatement = null;
+
         ResultSet resultSet = null;
+        ResultSet usernamesResultSet = null;
+
 
         List<BloggyArticle> bloggyArticles = new ArrayList<>();
 
         String query = "SELECT * FROM articles";
+        String fetchUsernamesQuery = "SELECT username FROM users WHERE id = ?";
 
 
         try {
 
             connection = Database.getConnection();
+
             statement = connection.createStatement();
+            preparedStatement = connection.prepareStatement(fetchUsernamesQuery);
+
             resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                bloggyArticles.add(
-                        new BloggyArticle(
-                                resultSet.getString("id"),
-                                resultSet.getString("title"),
-                                resultSet.getString("content"),
-                                resultSet.getString("submitter"),
-                                resultSet.getString("date")
-                        )
-                );
+
+                preparedStatement.setString(1, resultSet.getString("submitter"));
+
+                usernamesResultSet = preparedStatement.executeQuery();
+
+                while (usernamesResultSet.next()) {
+
+                    bloggyArticles.add(
+                            new BloggyArticle(
+                                    resultSet.getString("id"),
+                                    resultSet.getString("title"),
+                                    resultSet.getString("content"),
+                                    usernamesResultSet.getString("username"),
+                                    resultSet.getString("date")
+                            )
+                    );
+
+                }
+
             }
 
             return bloggyArticles;

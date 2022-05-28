@@ -69,14 +69,14 @@ public class ArticleController implements Initializable {
             );
 
             if (BloggyArticle.createNew(newArticle) == 1) {
-                navigateBackToHome(event, this.connectedUser);
+                navigateBackToHome(event);
             }
 
         }
 
     }
 
-    public void navigateBackToHome(ActionEvent event, BloggyUser connectedUser) throws IOException {
+    public void navigateBackToHome(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/home-view.fxml"));
 
@@ -89,7 +89,7 @@ public class ArticleController implements Initializable {
 
         HomeController homeController = loader.getController();
 
-        homeController.setConnectedUser(connectedUser);
+        homeController.setConnectedUser(this.connectedUser);
 
         stage.show();
     }
@@ -102,15 +102,20 @@ public class ArticleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        List<BloggyArticle> articles = BloggyArticle.fetchAll();
+        if(articleTableView != null) {
 
-        ObservableList<BloggyArticle> bloggyArticles = FXCollections.observableArrayList(articles);
+            List<BloggyArticle> _bloggyArticles = BloggyArticle.fetchAll();
 
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("Title"));
-        contentColumn.setCellValueFactory(new PropertyValueFactory<>("Content"));
-        submitterColumn.setCellValueFactory(new PropertyValueFactory<>("Submitter"));
-        publicationDateColumn.setCellValueFactory(new PropertyValueFactory<>("PublicationDate"));
+            ObservableList<BloggyArticle> bloggyArticles = FXCollections.observableArrayList(_bloggyArticles);
 
-        articleTableView.setItems(bloggyArticles);
+            titleColumn.setCellValueFactory(new PropertyValueFactory<>("Title"));
+            contentColumn.setCellValueFactory(new PropertyValueFactory<>("Content"));
+            submitterColumn.setCellValueFactory(new PropertyValueFactory<>("Submitter"));
+            publicationDateColumn.setCellValueFactory(new PropertyValueFactory<>("PublicationDate"));
+
+            articleTableView.setItems(bloggyArticles);
+
+        }
     }
+
 }

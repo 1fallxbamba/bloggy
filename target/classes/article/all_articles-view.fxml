@@ -2,10 +2,11 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="434.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.article.ArticleController">
+<AnchorPane prefHeight="496.0" prefWidth="1176.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.article.ArticleController">
 
-    <TableView fx:id="articleTableView" layoutX="9.0" layoutY="69.0" prefHeight="186.0" prefWidth="578.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="69.0">
+    <TableView fx:id="articleTableView" layoutX="9.0" layoutY="91.0" prefHeight="313.0" prefWidth="1154.0" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="91.0">
         <columns>
             <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
             <TableColumn fx:id="contentColumn" prefWidth="325.0" text="Content" />
@@ -16,6 +17,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-   <Button fx:id="exitButton" layoutX="525.0" layoutY="390.0" mnemonicParsing="false" onAction="#exitApp" text="E X I T" />
+   <Button fx:id="exitButton" layoutX="488.0" layoutY="462.0" mnemonicParsing="false" onAction="#exitApp" text="E X I T" />
+   <Button fx:id="goBackButton" layoutX="617.0" layoutY="462.0" mnemonicParsing="false" onAction="#navigateBackToHome" text="GO BACK" />
+   <Label layoutX="350.0" layoutY="14.0" text="Find here all the articles that have been published to Bloggy">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+   <Label layoutX="495.0" layoutY="48.0" text="(You can resize the cells to fit your display)" />
 
 </AnchorPane>
