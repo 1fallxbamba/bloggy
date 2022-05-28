@@ -13,7 +13,7 @@ public class BloggyApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/auth/registration-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/auth/login-view.fxml"));
 
         stage.setTitle("Bloggy : J.A.B.B");
 

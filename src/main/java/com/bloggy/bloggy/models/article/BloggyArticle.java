@@ -1,13 +1,21 @@
 package com.bloggy.bloggy.models.article;
 
+import com.bloggy.bloggy.models.user.BloggyUser;
 import com.bloggy.bloggy.utils.Alerter;
 import com.bloggy.bloggy.utils.Database;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BloggyArticle {
+
     private String id;
     private String title;
     private String content;
@@ -21,6 +29,14 @@ public class BloggyArticle {
         this.title = title;
         this.content = content;
         this.submitter = submitter;
+    }
+
+    public BloggyArticle(String id, String title, String content, String submitter, String publicationDate) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.submitter = submitter;
+        this.publicationDate = publicationDate;
     }
 
     public String getId() {
@@ -63,8 +79,7 @@ public class BloggyArticle {
         this.publicationDate = publicationDate;
     }
 
-    public static int createNew(BloggyArticle newArticle)
-    {
+    public static int createNew(BloggyArticle newArticle) {
         PreparedStatement statement = null;
 
         String query = "INSERT into articles values(?, ?, ?, ?)";
@@ -93,6 +108,44 @@ public class BloggyArticle {
             Alerter.showMessage("Aw...", "An unexpected error occurred, more details below", exception.getMessage());
             return 0;
         }
+    }
+
+    public static List<BloggyArticle> fetchAll() {
+
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        List<BloggyArticle> bloggyArticles = new ArrayList<>();
+
+        String query = "SELECT * FROM articles";
+
+
+        try {
+
+            connection = Database.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                bloggyArticles.add(
+                        new BloggyArticle(
+                                resultSet.getString("id"),
+                                resultSet.getString("title"),
+                                resultSet.getString("content"),
+                                resultSet.getString("submitter"),
+                                resultSet.getString("date")
+                        )
+                );
+            }
+
+            return bloggyArticles;
+
+        } catch (SQLException exception) {
+            Alerter.showMessage("Aw...", "An unexpected error occurred when fetching the articles, more details below", exception.getMessage());
+
+            return null;
+        }
+
     }
 
 }

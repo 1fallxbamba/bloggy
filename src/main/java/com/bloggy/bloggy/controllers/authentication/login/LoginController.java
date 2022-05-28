@@ -3,6 +3,7 @@ package com.bloggy.bloggy.controllers.authentication.login;
 import com.bloggy.bloggy.models.user.BloggyUser;
 import com.bloggy.bloggy.controllers.main.HomeController;
 import com.bloggy.bloggy.utils.Alerter;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,6 +68,10 @@ public class LoginController {
         homeController.setConnectedUser(connectedUser);
 
         stage.show();
+    }
+
+    public void exitApp() {
+        Platform.exit();
     }
 
 

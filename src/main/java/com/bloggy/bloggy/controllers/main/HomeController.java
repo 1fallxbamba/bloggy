@@ -3,6 +3,7 @@ package com.bloggy.bloggy.controllers.main;
 import com.bloggy.bloggy.controllers.article.ArticleController;
 import com.bloggy.bloggy.controllers.profile.ProfileController;
 import com.bloggy.bloggy.models.user.BloggyUser;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -84,6 +84,10 @@ public class HomeController {
         profileController.setConnectedUser(this.connectedUser);
 
         stage.show();
+    }
+
+    public void exitApp() {
+        Platform.exit();
     }
 
 }

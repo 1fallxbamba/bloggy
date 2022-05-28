@@ -2,6 +2,7 @@ package com.bloggy.bloggy.controllers.authentication.registration;
 
 import com.bloggy.bloggy.models.user.BloggyUser;
 import com.bloggy.bloggy.utils.Alerter;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,9 +26,6 @@ public class RegistrationController {
 
     @FXML
     private PasswordField passwordField;
-
-    @FXML
-    private Button registerButton;
 
 
     public void handleRegister(ActionEvent actionEvent) throws IOException {
@@ -59,6 +57,10 @@ public class RegistrationController {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void exitApp() {
+        Platform.exit();
     }
 
 }

@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="434.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.article.ArticleController">
 
-    <TableView fx:id="tbData" layoutX="9.0" layoutY="69.0" prefHeight="186.0" prefWidth="578.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="69.0">
+    <TableView fx:id="articleTableView" layoutX="9.0" layoutY="69.0" prefHeight="186.0" prefWidth="578.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="69.0">
         <columns>
             <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
             <TableColumn fx:id="contentColumn" prefWidth="325.0" text="Content" />
@@ -16,5 +16,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
+   <Button fx:id="exitButton" layoutX="525.0" layoutY="390.0" mnemonicParsing="false" onAction="#exitApp" text="E X I T" />
 
 </AnchorPane>
