@@ -19,5 +19,7 @@ Got everything ? Now you're all set !
 
 ## Running
 
-Having met all the prerequisites, just click the *RUN* button on your IDE et voilà ! bloggy should be up and running now. 
+Having met all the prerequisites, just click the *RUN* button on your IDE et voilà ! bloggy should be up and running now.
 
+>#### Academic purposes *(school stuff huh...)*
+> You can find a report describing this project in the *public/bloggy_report.pdf* file.
