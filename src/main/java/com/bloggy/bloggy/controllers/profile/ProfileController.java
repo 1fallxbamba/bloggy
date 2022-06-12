@@ -56,15 +56,17 @@ public class ProfileController {
 
             BloggyUser updatedUser = BloggyUser.updateInfo(existingUser);
 
+            this.connectedUser = updatedUser;
+
             if (updatedUser != null) {
-                navigateBackToHome(event, updatedUser);
+                navigateBackToHome(event);
             }
 
         }
 
     }
 
-    public void navigateBackToHome(ActionEvent event, BloggyUser connectedUser) throws IOException {
+    public void navigateBackToHome(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/home-view.fxml"));
 

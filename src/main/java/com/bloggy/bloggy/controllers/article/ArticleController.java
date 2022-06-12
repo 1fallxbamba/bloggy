@@ -6,6 +6,7 @@ import com.bloggy.bloggy.models.user.BloggyUser;
 import com.bloggy.bloggy.utils.Alerter;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,6 +49,8 @@ public class ArticleController implements Initializable {
     @FXML
     private TableColumn<BloggyArticle, String> publicationDateColumn;
 
+    @FXML
+    private Button editArticleButton;
 
     private BloggyUser connectedUser;
 
@@ -94,28 +97,42 @@ public class ArticleController implements Initializable {
         stage.show();
     }
 
-    public void exitApp() {
-        Platform.exit();
-    }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         if(articleTableView != null) {
 
+            articleTableView.setPlaceholder(new Label("No articles have been posted..."));
+
             List<BloggyArticle> _bloggyArticles = BloggyArticle.fetchAll();
 
             ObservableList<BloggyArticle> bloggyArticles = FXCollections.observableArrayList(_bloggyArticles);
-
+            
             titleColumn.setCellValueFactory(new PropertyValueFactory<>("Title"));
             contentColumn.setCellValueFactory(new PropertyValueFactory<>("Content"));
-            submitterColumn.setCellValueFactory(new PropertyValueFactory<>("Submitter"));
             publicationDateColumn.setCellValueFactory(new PropertyValueFactory<>("PublicationDate"));
-
+            submitterColumn.setCellValueFactory(new PropertyValueFactory<>("Submitter"));
             articleTableView.setItems(bloggyArticles);
+
+
+            TableView.TableViewSelectionModel<BloggyArticle> selectionModel = articleTableView.getSelectionModel();
+            selectionModel.setSelectionMode(SelectionMode.SINGLE);
+
+            articleTableView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super BloggyArticle>) change -> {
+                int index = articleTableView.getSelectionModel().getSelectedIndex();
+                BloggyArticle article = articleTableView.getItems().get(index);
+                Alerter.showMessage("Article of " + article.getSubmitter(), article.getTitle(), article.getContent());
+            });
+
 
         }
     }
+
+    public void exitApp() {
+        Platform.exit();
+    }
+
+
 
 }

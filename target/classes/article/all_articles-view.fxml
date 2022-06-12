@@ -17,8 +17,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-   <Button fx:id="exitButton" layoutX="488.0" layoutY="462.0" mnemonicParsing="false" onAction="#exitApp" text="E X I T" />
-   <Button fx:id="goBackButton" layoutX="617.0" layoutY="462.0" mnemonicParsing="false" onAction="#navigateBackToHome" text="GO BACK" />
+   <Button fx:id="exitButton" layoutX="395.0" layoutY="462.0" mnemonicParsing="false" onAction="#exitApp" text="E X I T" />
+   <Button fx:id="goBackButton" layoutX="713.0" layoutY="462.0" mnemonicParsing="false" onAction="#navigateBackToHome" text="GO BACK" />
    <Label layoutX="350.0" layoutY="14.0" text="Find here all the articles that have been published to Bloggy">
       <font>
          <Font size="18.0" />

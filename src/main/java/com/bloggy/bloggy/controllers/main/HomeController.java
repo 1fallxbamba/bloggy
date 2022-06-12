@@ -68,6 +68,7 @@ public class HomeController {
         stage.show();
     }
 
+
     public void navigateToEditProfile(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile/edit_profile-view.fxml"));

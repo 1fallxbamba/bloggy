@@ -23,6 +23,7 @@
       </Label>
       <TextField fx:id="articleTitleField" layoutX="111.0" layoutY="121.0" />
       <TextArea fx:id="articleContentField" layoutX="111.0" layoutY="176.0" prefHeight="200.0" prefWidth="413.0" />
-      <Button fx:id="saveArticleButton" layoutX="264.0" layoutY="400.0" mnemonicParsing="false" onAction="#saveArticle" text="POST IT" />
+      <Button fx:id="saveArticleButton" layoutX="207.0" layoutY="400.0" mnemonicParsing="false" onAction="#saveArticle" text="POST IT" />
+      <Button fx:id="saveArticleButton1" layoutX="357.0" layoutY="400.0" mnemonicParsing="false" onAction="#navigateBackToHome" text="GO BACK" />
    </children>
 </AnchorPane>

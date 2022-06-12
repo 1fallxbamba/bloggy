@@ -32,6 +32,7 @@ public class BloggyArticle {
         this.publicationDate = publicationDate;
     }
 
+
     public String getId() {
         return id;
     }
@@ -153,6 +154,50 @@ public class BloggyArticle {
 
         } catch (SQLException exception) {
             Alerter.showMessage("Aw...", "An unexpected error occurred when fetching the articles, more details below", exception.getMessage());
+
+            return null;
+        }
+
+    }
+
+    public static List<BloggyArticle> ofUser(String submitter) {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        List<BloggyArticle> userArticles = new ArrayList<>();
+
+        String query = "SELECT * FROM articles WHERE submitter = ?";
+
+
+        try {
+
+            connection = Database.getConnection();
+            preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, submitter);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                userArticles.add(
+                        new BloggyArticle(
+                                resultSet.getString("id"),
+                                resultSet.getString("title"),
+                                resultSet.getString("content"),
+                               "YOU",
+                                resultSet.getString("date")
+                        )
+                );
+
+            }
+
+            return userArticles;
+
+        } catch (SQLException exception) {
+            Alerter.showMessage("Aw...", "An unexpected error occurred when fetching your articles, more details below", exception.getMessage());
 
             return null;
         }
