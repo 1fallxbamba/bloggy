@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="496.0" prefWidth="1176.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.article.ArticleController">
+
+    <TableView fx:id="articleTableView" layoutX="9.0" layoutY="91.0" prefHeight="313.0" prefWidth="1154.0" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="91.0">
+        <columns>
+            <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="contentColumn" prefWidth="325.0" text="Content" />
+            <TableColumn fx:id="submitterColumn" prefWidth="393.0" text="Submitter" />
+            <TableColumn fx:id="publicationDateColumn" prefWidth="130.0" text="Publication Date" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+   <Button fx:id="exitButton" layoutX="395.0" layoutY="462.0" mnemonicParsing="false" onAction="#exitApp" text="E X I T" />
+   <Button fx:id="goBackButton" layoutX="713.0" layoutY="462.0" mnemonicParsing="false" onAction="#navigateBackToHome" text="GO BACK" />
+   <Label layoutX="350.0" layoutY="14.0" text="Find here all the articles that have been published to Bloggy">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+   <Label layoutX="495.0" layoutY="48.0" text="(You can resize the cells to fit your display)" />
+
+</AnchorPane>

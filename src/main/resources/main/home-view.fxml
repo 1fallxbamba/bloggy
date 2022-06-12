@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="452.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.main.HomeController">
+   <children>
+      <Label fx:id="welcomeLabel" layoutX="354.0" layoutY="16.0" text="Welcome {{user}}">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="newArticleButton" layoutX="17.0" layoutY="115.0" mnemonicParsing="false" onAction="#navigateToNewArticle" prefHeight="81.0" prefWidth="175.0" text="Post an article">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="editInfoButton" layoutX="617.0" layoutY="237.0" mnemonicParsing="false" onAction="#navigateToEditProfile" prefHeight="81.0" prefWidth="175.0" text="Edit my profile">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="logoutButton" cancelButton="true" layoutX="358.0" layoutY="412.0" mnemonicParsing="false" onAction="#logout" text="L o g o u t">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="allArticlesButton" layoutX="335.0" layoutY="195.0" mnemonicParsing="false" onAction="#navigateToAllArticles" prefHeight="81.0" prefWidth="175.0" text="Browse all articles">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="exitButton" cancelButton="true" layoutX="474.0" layoutY="412.0" mnemonicParsing="false" onAction="#exitApp" text="E x i t">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

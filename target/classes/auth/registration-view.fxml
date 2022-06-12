@@ -1,77 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.geometry.Insets?>
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.bloggy.bloggy.pages.authentication.registration.RegistrationController"
-          prefHeight="400.0" prefWidth="600.0">
-
-    <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
-    <columnConstraints>
-        <ColumnConstraints minWidth="100" prefWidth="100"
-                           maxWidth="Infinity" halignment="RIGHT">
-        </ColumnConstraints>
-        <ColumnConstraints minWidth="200" prefWidth="200"
-                           maxWidth="Infinity" hgrow="ALWAYS">
-        </ColumnConstraints>
-    </columnConstraints>
-
-    <!-- Add Header Label -->
-    <Label text="Registration Form" GridPane.columnIndex="0"
-           GridPane.rowIndex="0" GridPane.columnSpan="2"
-           GridPane.rowSpan="1" GridPane.halignment="CENTER" >
-        <font>
-            <Font name="Arial" size="24" ></Font>
-        </font>
-        <GridPane.margin>
-            <Insets top="20" right="0" bottom="20" left="0"></Insets>
-        </GridPane.margin>
-    </Label>
-
-
-    <Label text="Full Name : " GridPane.columnIndex="0"
-           GridPane.rowIndex="1" >
-    </Label>
-    <TextField fx:id="nameField" prefHeight="40"
-               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-
-
-    <Label text="Username : " GridPane.columnIndex="0"
-           GridPane.rowIndex="2" >
-    </Label>
-
-    <TextField fx:id="usernameField" prefHeight="40"
-               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-
-
-    <Label text="Password : " GridPane.columnIndex="0"
-           GridPane.rowIndex="3" >
-    </Label>
-    <PasswordField fx:id="passwordField" prefHeight="40"
-                   GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-
-
-    <Button fx:id="submitButton" text="Register"
-            prefWidth="100" prefHeight="40" defaultButton="true"
-            GridPane.columnIndex="0" GridPane.rowIndex="4"
-            GridPane.columnSpan="2" GridPane.rowSpan="1"
-            GridPane.halignment="CENTER"
-            onAction="#handleSubmitButtonAction">
-        <GridPane.margin>
-            <Insets top="20" right="0" bottom="20" left="0"></Insets>
-        </GridPane.margin>
-    </Button>
-
-</GridPane>
+<AnchorPane prefHeight="506.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloggy.bloggy.controllers.authentication.registration.RegistrationController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="45.0" text="Register to J.A.B.B" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <TextField id="fullNameField" fx:id="fullNameField" layoutX="153.0" layoutY="131.0" prefHeight="30.0" prefWidth="396.0" />
+      <TextField id="usernameField" fx:id="usernameField" layoutX="154.0" layoutY="196.0" prefHeight="30.0" prefWidth="396.0" />
+      <PasswordField id="passwordField" fx:id="passwordField" layoutX="153.0" layoutY="263.0" prefHeight="30.0" prefWidth="396.0" />
+      <Label layoutX="26.0" layoutY="135.0" text="Full name :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="199.0" text="Username :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="266.0" text="Password :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button id="registerButton" fx:id="registerButton" layoutX="257.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="36.0" prefWidth="97.0" text="Let's gooo" />
+      <Hyperlink layoutX="228.0" layoutY="417.0" onAction="#navigateToLogin" text="I have an account bro.." />
+      <Button fx:id="exitButton" cancelButton="true" layoutX="274.0" layoutY="472.0" mnemonicParsing="false" onAction="#exitApp" text="E X I T" />
+   </children>
+</AnchorPane>
